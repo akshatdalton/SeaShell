@@ -3,7 +3,6 @@
 
 #define HOST_NAME_MAX 64
 
-char* user_name;
-char* host_name;
+#include <stdbool.h>
 
 #endif
