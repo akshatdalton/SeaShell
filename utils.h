@@ -13,9 +13,11 @@
 #define ANSI_CLEAR "\033[2J\033[1;1H"
 
 #include <stdbool.h>
+#include <stddef.h>
+#include <string.h>
 
 void initialize_everything();
-bool handle_command();
 void get_input();
+char *substr(const char *str, int start_ind, size_t length);
 
 #endif

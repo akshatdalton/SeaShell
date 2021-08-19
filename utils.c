@@ -11,21 +11,30 @@ void initialize_everything() {
 }
 
 void get_input() {
-    int bytes_read;
     size_t size = 10;
     char *input;
     input = (char *)malloc(size);
-    bytes_read = getline(&input, &size, stdin);
 
-    if (bytes_read < 0) {
+    if (getline(&input, &size, stdin) < 0) {
         printf("An ERROR encounterd while reading the input");
     } else {
         printf("%s", input);
     }
 }
 
-bool handle_command() {
-    get_input();
-    prompt();
-    return false;
+char *substr(const char *str, int start_ind, size_t length) {
+    size_t total_length = strlen(str);
+    if (start_ind + length > total_length) {
+        return NULL;
+    }
+
+    char *child_str;
+    child_str = (char *)malloc(sizeof(char) * (length + 1));
+
+    for (int ind = 0; ind < length; ind++) {
+        child_str[ind] = str[ind + start_ind];
+    }
+    child_str[length] = '\0';
+
+    return child_str;
 }

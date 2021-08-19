@@ -1,5 +1,6 @@
 #include "shell.h"
 
+#include "prompt.h"
 #include "utils.h"
 
 int main() {
@@ -13,4 +14,10 @@ int main() {
     }
 
     return 0;
+}
+
+bool handle_command() {
+    get_input();
+    prompt();
+    return false;
 }
