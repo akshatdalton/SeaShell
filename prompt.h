@@ -11,6 +11,7 @@ char* user_name;
 char* host_name;
 char* home_path;
 
+void initialize_everything();
 void get_data_for_prompt();
 void prompt();
 char* get_home_path();

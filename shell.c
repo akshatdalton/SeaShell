@@ -1,5 +1,6 @@
 #include "shell.h"
 
+#include "parse.h"
 #include "prompt.h"
 #include "utils.h"
 
@@ -7,17 +8,13 @@ int main() {
     initialize_everything();
 
     while (true) {
-        if (handle_command()) {
-            // If `quit` command is given we need to break here.
-            break;
-        }
+        handle_input();
     }
 
     return 0;
 }
 
-bool handle_command() {
+void handle_input() {
     get_input();
     prompt();
-    return false;
 }

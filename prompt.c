@@ -2,7 +2,17 @@
 #include "prompt.h"
 
 #include "shell.h"
+#include "signals.h"
 #include "utils.h"
+
+void initialize_everything() {
+    printf(ANSI_CLEAR);
+    printf(ANSI_YELLOW_BOLD "\n\t***\tWelcome to SeaShell\t***\t\n" ANSI_DEFAULT);
+
+    get_data_for_prompt();
+    initialize_signals();
+    prompt();
+}
 
 void get_data_for_prompt() {
     user_name = getlogin();

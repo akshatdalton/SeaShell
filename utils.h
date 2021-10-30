@@ -12,12 +12,21 @@
 #define ANSI_DEFAULT "\033[0m"
 #define ANSI_CLEAR "\033[2J\033[1;1H"
 
-#include <stdbool.h>
-#include <stddef.h>
-#include <string.h>
+#define MAX_INPUT_SIZE 1024
+#define MAX_TOKEN_SIZE 64
+#define MAX_NUM_TOKENS 64
 
-void initialize_everything();
-void get_input();
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+
+char **tokenize(char *line, char delim);
+void destroy_tokens(char **tokens);
+char *concat(char *str1, char *str2);
+char *trim(char *str, char ch);
+void exit_shell();
 char *substr(const char *str, int start_ind, size_t length);
 
 #endif
