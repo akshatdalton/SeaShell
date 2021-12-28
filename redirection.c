@@ -28,7 +28,7 @@ void third_stage_parse_command(char* command) {
         return;
     }
     if (pid == 0) {
-        int file = open(filename, O_WRONLY | O_CREAT, 0777);
+        int file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0777);
         if (file == -1) {
             perror("could not open the file");
             destroy_tokens(tokens);

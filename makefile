@@ -2,16 +2,13 @@ CC = gcc
 
 CFLAGS = -g -Wall
 
-seashell: prompt.o shell.o utils.o parse.o pipe.o redirection.o signals.o
-	${CC} -o seashell ${CFLAGS} prompt.o shell.o utils.o parse.o pipe.o redirection.o signals.o
+seashell: shell.o utils.o parse.o cd.o echo.o signals.o pipe.o redirection.o helper.o
+	${CC} -o seashell ${CFLAGS} shell.o utils.o parse.o cd.o echo.o signals.o pipe.o redirection.o helper.o
 
 clean:
 	rm -rf *.o seashell
 
 # Following commands are invoked indirectly.
-
-prompt.o: prompt.c prompt.h
-	${CC} ${CFLAGS} -c prompt.c
 
 shell.o: shell.c shell.h
 	${CC} ${CFLAGS} -c shell.c
@@ -22,12 +19,20 @@ utils.o: utils.c utils.h
 parse.o: parse.c parse.h
 	${CC} ${CFLAGS} -c parse.c
 
+cd.o: cd.c cd.h
+	${CC} ${CFLAGS} -c cd.c
+
+echo.o: echo.c echo.h
+	${CC} ${CFLAGS} -c echo.c
+
+signals.o: signals.c signals.h
+	${CC} ${CFLAGS} -c signals.c
+
 pipe.o: pipe.c pipe.h
 	${CC} ${CFLAGS} -c pipe.c
 
 redirection.o: redirection.c redirection.h
 	${CC} ${CFLAGS} -c redirection.c
 
-signals.o: signals.c signals.h
-	${CC} ${CFLAGS} -c signals.c
-
+helper.o: helper.c helper.h
+	${CC} ${CFLAGS} -c helper.c

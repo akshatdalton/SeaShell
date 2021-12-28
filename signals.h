@@ -4,6 +4,6 @@
 #include <signal.h>
 
 void initialize_signals();
-void signal_handler(int signal_number);
+void signal_handler(int signum);
 
 #endif

@@ -1,5 +1,8 @@
 #include "parse.h"
 
+#include "cd.h"
+#include "echo.h"
+#include "helper.h"
 #include "pipe.h"
 #include "utils.h"
 
@@ -16,25 +19,25 @@ void get_input() {
 void handle_command(char *command) {
     char **cmd_list = tokenize(command, ' ');
     char *cmd = cmd_list[0];
-    printf("%s", cmd);
+
     if (strcmp(cmd, "cd") == 0) {
-        // handle_cd(cmd_list);
+        handle_cd(cmd_list);
     } else if (strcmp(cmd, "echo") == 0) {
-        // handle_echo(cmd_list);
+        handle_echo(cmd_list);
     } else if (strcmp(cmd, "clear") == 0) {
         printf(ANSI_CLEAR);
     } else if (strcmp(cmd, "exit") == 0) {
         exit_shell();
     } else {
-        // handle_cmd(cmd, cmd_list);
+        handle_cmd(cmd, cmd_list);
     }
 
     destroy_tokens(cmd_list);
 }
 
 void first_stage_parse_input(char *input) {
-    // At first stage, we segregate strings by `;`.
-    const char *delim = ";";
+    // At first stage, we segregate strings by `;;`.
+    const char *delim = ";;";
     char *saveptr;
     char *next = strtok_r(input, delim, &saveptr);
     while (next != NULL) {

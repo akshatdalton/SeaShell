@@ -1,7 +1,6 @@
 #include "shell.h"
 
 #include "parse.h"
-#include "prompt.h"
 #include "utils.h"
 
 int main() {

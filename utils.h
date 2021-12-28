@@ -22,11 +22,14 @@
 #include <string.h>
 #include <sys/types.h>
 
+pid_t SHELL_PID;
+
+void initialize_everything();
+void prompt();
 char **tokenize(char *line, char delim);
 void destroy_tokens(char **tokens);
 char *concat(char *str1, char *str2);
 char *trim(char *str, char ch);
 void exit_shell();
-char *substr(const char *str, int start_ind, size_t length);
 
 #endif

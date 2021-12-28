@@ -1,6 +1,36 @@
 #include "utils.h"
 
-#include "prompt.h"
+#include "signals.h"
+
+void initialize_everything() {
+    printf(ANSI_CLEAR);
+    {
+        const char rocket[] =
+            "                       ^ \n\
+                      /^\\\n\
+                      |-|\n\
+                      | |\n\
+                      |T|\n\
+                      |U|\n\
+                      |R|\n\
+                      |T|\n\
+                     /|L|\\\n\
+                    / |E| \\\n\
+                   |  | |  |\n\
+                    `-\"\"\"-`\n\
+";
+        fputs(rocket, stdout);
+    }
+    printf(ANSI_YELLOW_BOLD "\n\t***\tWelcome to SeaShell\t***\t\n" ANSI_DEFAULT);
+
+    initialize_signals();
+    prompt();
+}
+
+void prompt() {
+    printf("\nSeaShell > ");
+    fflush(stdout);
+}
 
 char **tokenize(char *line, char delim) {
     char **tokens = (char **)malloc(MAX_NUM_TOKENS * sizeof(char *));
@@ -78,21 +108,4 @@ char *trim(char *str, char ch) {
 void exit_shell() {
     printf("\nClosed all Background processes\n");
     exit(0);
-}
-
-char *substr(const char *str, int start_ind, size_t length) {
-    size_t total_length = strlen(str);
-    if (start_ind + length > total_length) {
-        return NULL;
-    }
-
-    char *child_str;
-    child_str = (char *)malloc(sizeof(char) * (length + 1));
-
-    for (int ind = 0; ind < length; ind++) {
-        child_str[ind] = str[ind + start_ind];
-    }
-    child_str[length] = '\0';
-
-    return child_str;
 }
