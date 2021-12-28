@@ -1,6 +1,6 @@
 # SeaShell
 - Run `make` cmd to run `makefile`.
-- Use `./turtle` to initiate the shell.
+- Use `./seashell` to initiate the shell.
 - Entry point exists in `shell.c`.
 
 # Challenges faced while making this project:
