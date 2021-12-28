@@ -1,4 +1,4 @@
-# Turtle
+# SeaShell
 - Run `make` cmd to run `makefile`.
 - Use `./turtle` to initiate the shell.
 - Entry point exists in `shell.c`.
